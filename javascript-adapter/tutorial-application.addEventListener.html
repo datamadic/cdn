@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: application.addEventListener</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: application.addEventListener</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>application.addEventListener</h2>
+</header>
+
+<article>
+    <p>Registers an event listener on the specified event. Supported application event types are:</p>
+<ul>
+<li>closed</li>
+<li>connected</li>
+<li>crashed</li>
+<li>error</li>
+<li>not-responding</li>
+<li>out-of-memory</li>
+<li>responding</li>
+<li>started</li>
+<li>run-requested</li>
+<li>window-navigation-rejected</li>
+<li>window-created</li>
+<li>window-closed</li>
+</ul>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>app.addEventListener(&quot;closed&quot;, function (event) {
+    console.log(&quot;The application has closed&quot;);
+}, function () {
+    console.log(&quot;The registration was successful&quot;);
+},function (reason) {
+    console.log(&quot;failure: &quot; + reason);
+});</code></pre><h3>Application Events</h3><h4>closed</h4><p>Generated when an application is closed.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    topic: &quot;application&quot;,
+    type: &quot;closed&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>connected</h4><p>Generated when an application has authenticated and is connected.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    topic: &quot;application&quot;,
+    type: &quot;connected&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>crashed</h4><p>Generated when an application crashes.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;crashed&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>error</h4><p>Generated when an application error occurs.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;error&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>not-responding</h4><p>Generated when an application is not responding.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;not-responding&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>out-of-memory</h4><p>Generated when an application is out of memory.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;out-of-memory&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>responding</h4><p>Generated when an application is responding.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;responding&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>started</h4><p>Generated when an application has started.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;started&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>run-requested</h4><p>Generated when Application.run() is called for an already running application.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  topic: &quot;application&quot;,
+  type: &quot;run-requested&quot;,
+  uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>window-navigation-rejected</h4><p>Generated when window navigation is rejected as per ContentNavigation whitelist/blacklist rules</p>
+<pre class="prettyprint source lang-js"><code>{
+    name: &quot;windowName&quot;,
+    sourceName: &quot;source of navigation window name&quot;,
+    topic: &quot;window-navigation-rejected&quot;,
+    url: &quot;http://blocked-content.url&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>window-created</h4><p>Generated when a child window is created for this Application</p>
+<pre class="prettyprint source lang-js"><code> {
+    name: &quot;windowName&quot;,
+    topic: &quot;application&quot;,
+    type: &quot;window-created&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h3>window-closed</h3><p>Generated when a child window is closed.</p>
+<pre class="prettyprint source lang-js"><code>{
+    name: &quot;windowName&quot;,
+    topic: &quot;application&quot;,
+    type: &quot;window-closed&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

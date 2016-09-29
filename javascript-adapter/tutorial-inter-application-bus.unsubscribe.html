@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: inter-application-bus.unsubscribe</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: inter-application-bus.unsubscribe</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>inter-application-bus.unsubscribe</h2>
+</header>
+
+<article>
+    <p>Unsubscribes to messages from the specified application on the specified topic.</p>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>var callback = function (message, senderUuid) {
+    console.log(msg, senderUuid);
+};
+
+// To Subscribe:
+fin.desktop.InterApplicationBus.subscribe(&quot;*&quot;, &quot;a topic&quot;, callback);
+
+// To Unsubscribe:
+fin.desktop.InterApplicationBus.unsubscribe(&quot;*&quot;, &quot;a topic&quot;, callback);</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

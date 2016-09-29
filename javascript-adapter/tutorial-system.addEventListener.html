@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: system.addEventListener</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: system.addEventListener</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>system.addEventListener</h2>
+</header>
+
+<article>
+    <p>Registers an event listener on the specified event. Supported system event types are:</p>
+<ul>
+<li>desktop-icon-clicked</li>
+<li>idle-state-changed</li>
+<li>monitor-info-changed</li>
+<li>session-changed</li>
+</ul>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>fin.desktop.System.addEventListener('monitor-info-changed', function (evnt) {
+    console.log(&quot;The monitor information has changed to: &quot;, evnt);
+}, function () {
+    console.log(&quot;The registration was successful&quot;);
+},function (err) {
+    console.log(&quot;failure: &quot; + err);
+});</code></pre><h3>System Events</h3><h4>application-closed</h4><p>Generated when an application has closed</p>
+<pre class="prettyprint source lang-js"><code> {
+    topic: &quot;system&quot;,
+    type: &quot;application-closed&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>application-crashed</h4><p>Generated when an application has crashed</p>
+<pre class="prettyprint source lang-js"><code> {
+    topic: &quot;system&quot;,
+    type: &quot;application-crashed&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>application-created</h4><p>Generated when an application is created</p>
+<pre class="prettyprint source lang-js"><code> {
+    topic: &quot;system&quot;,
+    type: &quot;application-created&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>application-started</h4><p>Generated when an application has started</p>
+<pre class="prettyprint source lang-js"><code> {
+    topic: &quot;system&quot;,
+    type: &quot;application-started&quot;,
+    uuid: &quot;454C7F31-A915-4EA2-83F2-CFA655453C52&quot; // the UUID of the application
+}</code></pre><h4>desktop-icon-clicked</h4><p>Generated when the desktop icon is clicked while it's already running.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    mouse: {
+        left: 13, //the left virtual screen coordinate of the mouse
+        top: 14  // the top virtual screen coordinate of the mouse
+    },
+    tickCount: 233000, //the number of milliseconds that have elapsed since the system was started,
+    topic: &quot;system&quot;,
+    type: &quot;desktop-icon-clicked&quot;
+}</code></pre><h4>idle-state-changed</h4><p>Generated when a user enters or returns from idle state. This method is continuously generated every minute while the user is in idle. A user enters idle state when the computer is locked or when there has been no keyboard/mouse activity for 1 minute. A user returns from idle state when the computer is unlocked or keyboard/mouse activity has resumed.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    elapsedTime: 6000, //How long in milliseconds since the user has been idle.
+    isIdle: true, //true when the user is idle,false when the user has returned;
+    topic: &quot;system&quot;,
+    type: &quot;idle-state-changed&quot;
+}</code></pre><h4>monitor-info-changed</h4><p>Generated on changes of a monitor's size/location. A monitor's size changes when the taskbar is resized or relocated. The available space of a monitor defines a rectangle that is not occupied by the taskbar.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    nonPrimaryMonitors: [{
+        availableRect: {
+            bottom: 55, //bottom-most available monitor coordinate,
+            left: 55, //left-most available monitor coordinate,
+            right: 55, //right-most available monitor coordinate,
+            top: 55 //top-most available monitor coordinate
+        },
+        deviceId: &quot;device&quot;, //device id of the display
+        displayDeviceActive: true, //true if the display is active
+        monitorRect: {
+            bottom: 55, //bottom-most monitor coordinate,
+            left: 55, //left-most monitor coordinate,
+            right: 55, //right-most monitor coordinate,
+            top: 55 //top-most monitor coordinate
+        },
+        name: &quot;display two&quot; //name of the display
+    }],
+    primaryMonitor: {
+        availableRect: {
+            bottom: 55, //bottom-most available monitor coordinate,
+            left: 55, //left-most available monitor coordinate,
+            right: 55, //right-most available monitor coordinate,
+            top: 55 //top-most available monitor coordinate
+        },
+        deviceId: &quot;device&quot;, //device id of the display
+        displayDeviceActive: true, //true if the display is active
+        monitorRect: {
+            bottom: 55, //bottom-most monitor coordinate,
+            left: 55, //left-most monitor coordinate,
+            right: 55, //right-most monitor coordinate,
+            top: 55 //top-most monitor coordinate
+        },
+        name: &quot;display one&quot; //name of the display
+    },
+    reason: &quot;display&quot;, //the action that triggered this event. Can be &quot;taskbar&quot;, &quot;display&quot; or &quot;unknown&quot;
+    taskbar: {
+        edge: &quot;top&quot; // which edge of a monitor the taskbar is on,
+        rect: {
+            bottom: 55, //bottom-most coordinate of the taskbar
+            left: 55, //left-most coordinate of the taskbar
+            right: 55, //right-most coordinate of the taskbar
+            top: 55 //top-most coordinate of the taskbar
+        }
+    },
+    topic: &quot;system&quot;,
+    type: &quot;monitor-info-changed&quot;,
+    virtualScreen: {
+        bottom: 55, //bottom-most coordinate of the virtual screen,
+        left: 55, //left-most coordinate of the virtual screen,
+        right: 55, //right-most coordinate of the virtual screen,
+        top: 55 //top-most coordinate of the virtual screen
+    }
+}</code></pre><h4>session-changed</h4><p>Generated on changes to a user’s local computer session.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    reason: &quot;lock&quot;, //the action that triggered this event:
+        //&quot;lock&quot;
+        //&quot;unlock&quot;
+        //&quot;remote-connect&quot;
+        //&quot;remote-disconnect&quot;
+        //&quot;unknown&quot;
+    topic: &quot;system&quot;,
+    type: &quot;session-changed&quot;
+}</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

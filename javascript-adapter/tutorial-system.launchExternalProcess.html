@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: system.launchExternalProcess</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: system.launchExternalProcess</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>system.launchExternalProcess</h2>
+</header>
+
+<article>
+    <p>Runs an executable or batch file.</p>
+<h3>Examples</h3><h4>Basic Example</h4><pre class="prettyprint source lang-js"><code>fin.desktop.System.launchExternalProcess({
+        path: &quot;notepad&quot;,
+        arguments: &quot;&quot;,
+        listener: function(code) {
+                console.log('the exit code', code);
+            }
+    },
+    function() {
+        console.log('all good');
+    },
+    function(){
+        console.log('an error');
+    });</code></pre><h4>Listener callback</h4><pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    uuid: &quot;FB3E6E36-0976-4C2B-9A09-FB2E54D2F1BB&quot; //The mapped UUID which identifies the launched process
+}</code></pre><h4>Example using an alias from app.json appAssets property</h4><pre class="prettyprint source lang-json"><code>&quot;appAssets&quot;: [
+    {
+    &quot;src&quot;: &quot;exe.zip&quot;,
+    &quot;alias&quot;: &quot;myApp&quot;,
+    &quot;version&quot;: &quot;4.12.8&quot;,
+    &quot;target&quot;: &quot;myApp.exe&quot;,
+    &quot;args&quot;: &quot;a b c d&quot;
+    },
+]</code></pre><pre class="prettyprint source lang-js"><code>/*
+When called, if no arguments are passed then the arguments (if any)
+are taken from the 'app.json' file, from the  'args' parameter
+of the 'appAssets' Object with the relevant 'alias'.
+ */
+fin.desktop.System.launchExternalProcess({
+        //Additionally note that the executable found in the zip file specified in appAssets
+        //will default to the one mentioned by appAssets.target
+        //If the the path below refers to a specific path it will override this default
+        path: &quot;myApp&quot;,
+        listener: function(code) {
+                console.log('the exit code', code);
+            }
+    },
+    function() {
+        console.log('all good');
+    },
+    function(){
+        console.log('an error');
+    });</code></pre><h4>Example using an alias but overridding the arguments</h4><pre class="prettyprint source lang-json"><code>&quot;appAssets&quot;: [
+    {
+    &quot;src&quot;: &quot;exe.zip&quot;,
+    &quot;alias&quot;: &quot;myApp&quot;,
+    &quot;version&quot;: &quot;4.12.8&quot;,
+    &quot;target&quot;: &quot;myApp.exe&quot;,
+    &quot;args&quot;: &quot;a b c d&quot;
+    },
+]</code></pre><pre class="prettyprint source lang-js"><code>/*
+If 'arguments' is passed as a parameter it takes precedence
+over any 'args' set in the 'app.json'.
+ */
+fin.desktop.System.launchExternalProcess({
+        path: &quot;myApp&quot;,
+        arguments: &quot;e f g&quot;,
+        listener: function(code) {
+                console.log('the exit code', code);
+            }
+    },
+    function() {
+        console.log('all good');
+    },
+    function(){
+        console.log('an error');
+    });</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

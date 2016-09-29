@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: system.getAllWindows</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: system.getAllWindows</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>system.getAllWindows</h2>
+</header>
+
+<article>
+    <p>Retrieves an array of data (name, ids, bounds) for all application windows.</p>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>fin.desktop.System.getAllWindows(function (windowInfoList) {
+    windowInfoList.forEach(function (windowInfo) {
+        console.log(&quot;Showing information for application with uuid: &quot;, windowInfo.uuid);
+        console.log(&quot;Main window: &quot;, windowInfo.mainWindow);
+        console.log(&quot;Child windows: &quot;, windowInfo.childWindows);
+    });
+});</code></pre><h4>Window Info List</h4><pre class="prettyprint source lang-js"><code>//This response has the following shape:
+[
+    {
+        uuid: &quot;uuid&quot;, //uuid of the application,
+        mainWindow: {
+            name: &quot;windowName&quot;, //name of the main window,
+            top: 42, //top-most coordinate of the main window,
+            right: 42, //right-most coordinate of the main window,
+            bottom: 42, //bottom-most coordinate of the main window,
+            left: 42 //left-most coordinate of the main window
+        },
+        childWindows: [{
+                name: &quot;windowName&quot;, //name of the child window,
+                top: 42, //top-most coordinate of the child window,
+                right: 42, //right-most coordinate of the child window,
+                bottom: 42, //bottom-most coordinate of the child window,
+                left: 42 //left-most coordinate of the child window
+            }]
+    }
+]</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

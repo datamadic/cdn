@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: application.constructor</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: application.constructor</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>application.constructor</h2>
+</header>
+
+<article>
+    <p>An object representing an application. Allows the developer to create, execute, show and close an application,
+as well as listen to application events.</p>
+<h2>Syntax</h2><pre class="prettyprint source lang-js"><code>fin.desktop.Application(object options,
+                        function callback,
+                        function errorCallback);</code></pre><h2>Parameters</h2><pre class="prettyprint source"><code>object options</code></pre><p>The options of the application. See below.</p>
+<pre class="prettyprint source"><code>function callback()</code></pre><p><b>Optional.</b> A function that is called when the Application object is ready to use.</p>
+<pre class="prettyprint source"><code>function errorCallback(string reason)</code></pre><p><b>Optional.</b> A function that is called if the constructor fails. The reason for failure is passed as an argument.</p>
+<h2>Options</h2><h3>Required</h3><pre class="prettyprint source"><code>string applicationIcon</code></pre><p>The URL of an icon to be shown on the desktop. Support formats: Portable Network
+Graphic (PNG); Size: 256 x 256</p>
+<pre class="prettyprint source"><code>string name</code></pre><p>The name of the application.</p>
+<pre class="prettyprint source"><code>string uuid</code></pre><p>The UUID of the application, unique within the set of all other Applications running in OpenFin Runtime.</p>
+<h3>Optional</h3><pre class="prettyprint source"><code>object mainWindowOptions</code></pre><pre class="prettyprint source"><code>    The options of the main window of the application. For a description of these options, see
+    &lt;a href=&quot;/developers/api/js/window/window.html&quot;>Window&lt;/a>.</code></pre><pre class="prettyprint source"><code>string version</code></pre><p>The version of the application.</p>
+<p>Full arguments for  <code>mainWindowOptions</code> can be found <a href="https://openfin.co/application-config/">here</a> under startup_app config</p>
+<h2>Example</h2><pre class="prettyprint source lang-js"><code>var app = new fin.desktop.Application({
+    url: &quot;application.html&quot;,
+    uuid: &quot;74BED629-2D8E-4141-8582-73E364BDFA74&quot;,
+    applicationIcon: &quot;icon.png&quot;,
+    name: &quot;Application Name&quot;,
+    mainWindowOptions: {
+        defaultHeight: 600,
+        defaultWidth: 800,
+        defaultTop: 300,
+        defaultLeft: 300,
+        autoShow: true
+    }
+}, function () {
+    console.log(&quot;Application successfully created&quot;);
+    app.run();
+}, function () {
+    console.log(&quot;Error creating application&quot;);
+});</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
