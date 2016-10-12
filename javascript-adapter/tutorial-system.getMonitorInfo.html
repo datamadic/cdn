@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: system.getMonitorInfo</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: system.getMonitorInfo</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>system.getMonitorInfo</h2>
+</header>
+
+<article>
+    <p>Retrieves an object that contains data about the about the monitor setup of the computer that the runtime is running on.</p>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>fin.desktop.System.getMonitorInfo(function (monitorInfo) {
+    console.log(&quot;This object contains information about all monitors: &quot;, monitorInfo);
+});</code></pre><h4>Monitor Info</h4><pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    nonPrimaryMonitors: [{
+        availableRect: {
+            bottom: 55, //bottom-most available monitor coordinate
+            left: 55, //left-most available monitor coordinate
+            right: 55, //right-most available monitor coordinate
+            top: 55 //top-most available monitor coordinate
+        },
+        deviceId: 46, //device id of the display,
+        displayDeviceActive: true, //true if the display is active
+        monitorRect: {
+            bottom: 55, //bottom-most monitor coordinate
+            left: 55, //left-most monitor coordinate
+            right: 55, //right-most monitor coordinate
+            top: 55 //top-most monitor coordinate
+        },
+        name: &quot;displayName&quot; //name of the display
+    }],
+    primaryMonitor: {
+        availableRect: {
+            bottom: 55, //bottom-most available monitor coordinate
+            left: 55, //left-most available monitor coordinate
+            right: 55, //right-most available monitor coordinate
+            top: 55 //top-most available monitor coordinate
+        },
+        deviceId: 46, //device id of the display,
+        displayDeviceActive: true, //true if the display is active
+        monitorRect: {
+            bottom: 55, //bottom-most monitor coordinate
+            left: 55, //left-most monitor coordinate
+            right: 55, //right-most monitor coordinate
+            top: 55 //top-most monitor coordinate
+        },
+        name: &quot;displayName&quot; //name of the display
+    },
+    reason: &quot;api-query&quot;, //always &quot;api-query&quot;,
+    taskbar: {
+        edge: &quot;edge&quot;, //which edge of a monitor the taskbar is on
+        rect: {
+            bottom: 55, //bottom-most coordinate of the taskbar
+            left: 55, //left-most coordinate of the taskbar
+            right: 55, //right-most coordinate of the taskbar
+            top: 55 //top-most coordinate of the taskbar
+        }
+    },
+    virtualScreen: {
+        bottom: 55, //bottom-most coordinate of the virtual screen,
+        left: 55, //left-most coordinate of the virtual screen,
+        right: 55, //right-most coordinate of the virtual screen,
+        top: 55 //top-most coordinate of the virtual screen
+    }
+}</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

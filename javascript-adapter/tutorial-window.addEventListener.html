@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Tutorial: window.addEventListener</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="fin.desktop.module_Application.html">Application</a></li><li><a href="fin.desktop.module_InterApplicationBus.html">InterApplicationBus</a></li><li><a href="fin.desktop.module_Notification.html">Notification</a></li><li><a href="fin.desktop.module_System.html">System</a></li><li><a href="fin.desktop.module_Window.html">Window</a></li></ul><h3>Classes</h3><ul><li><a href="fin.desktop.Application.html">Application</a></li><li><a href="fin.desktop.Notification.html">Notification</a></li><li><a href="fin.desktop.Window.html">Window</a></li></ul>
+</nav>
+<div id="main">
+
+    <h1 class="page-title">Tutorial: window.addEventListener</h1>
+
+    <section>
+
+<header>
+    
+
+    <h2>window.addEventListener</h2>
+</header>
+
+<article>
+    <p>Registers an event listener on the specified event. Supported window event types are:</p>
+<ul>
+<li>blurred</li>
+<li>bounds-changed</li>
+<li>bounds-changing</li>
+<li>closed</li>
+<li>close-requested</li>
+<li>disabled-frame-bounds-changed</li>
+<li>disabled-frame-bounds-changing</li>
+<li>focused</li>
+<li>frame-disabled</li>
+<li>frame-enabled</li>
+<li>group-changed</li>
+<li>hidden</li>
+<li>maximized</li>
+<li>minimized</li>
+<li>restored</li>
+<li>shown</li>
+</ul>
+<h3>Example</h3><pre class="prettyprint source lang-js"><code>var finWindow = fin.desktop.Window.getCurrent();
+
+finWindow.addEventListener(&quot;bounds-changed&quot;, function (event) {
+    console.log(&quot;The window has been moved or resized&quot;);
+}, function () {
+    console.log(&quot;The registration was successful&quot;);
+},function (reason) {
+    console.log(&quot;failure:&quot; + reason);
+});</code></pre><h3>Window Events</h3><h4>blurred</h4><p>Generated when a window loses focus.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;blurred&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>bounds-changed</h4><p>Generated after changes in window's size and/or position.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    changeType: 2,  //describes what kind of change occurred.
+                    //0 means a change in position.
+                    //1 means a change in size.
+                    //2 means a change in position and size.
+    deffered: true, //true when pending changes have been applied.
+                    //to the window.
+    height: 2,      //the new height of the window.
+    left: 2,        //the left-most coordinate of the window.
+    name: &quot;windowName&quot;, //(string) the name of the window.
+    top: 2,         //the top-most coordinate of the window.
+    topic: &quot;window&quot;,
+    type: &quot;bounds-changed&quot;,
+    uuid: &quot;appUUID&quot;,//the UUID of the application the window belongs to.
+    width: 2        //the new width of the window.
+}</code></pre><h4>bounds-changing</h4><p>Generated during changes to a window's size and/or position.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    changeType: 2,  //describes what kind of change occurred.
+                    //0 means a change in position.
+                    //1 means a change in size.
+                    //2 means a change in position and size.
+    deffered: true, //true when pending changes have been applied.
+                    //to the window.
+    height: 2,      //the new height of the window.
+    left: 2,        //the left-most coordinate of the window.
+    name: &quot;windowName&quot;, //(string) the name of the window.
+    top: 2,         //the top-most coordinate of the window.
+    topic: &quot;window&quot;,
+    type: &quot;bounds-changing&quot;,
+    uuid: &quot;appUUID&quot;,//the UUID of the application the window belongs to.
+    width: 2        //the new width of the window.
+}</code></pre><h4>closed</h4><p>Generated on changes to a user’s local computer session.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;closed&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>close-requested</h4><p>Generated when a window has been prevented from closing. A window will be prevented from closing by default, either through the API or by a user when ‘close-requested’ has been subscribed to and the Window.close(force) flag is false.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;close-requested&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>disabled-frame-bounds-changed</h4><p>Generated when the frame is disabled after all prevent user changes in window's size and/or position have completed.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    changeType: 2,  //describes what kind of change occurred.
+                    //0 means a change in position.
+                    //1 means a change in size.
+                    //2 means a change in position and size.
+    deffered: true, //true when pending changes have been applied.
+                    //to the window.
+    height: 2,      //the new height of the window.
+    left: 2,        //the left-most coordinate of the window.
+    name: &quot;windowName&quot;, //(string) the name of the window.
+    top: 2,         //the top-most coordinate of the window.
+    topic: &quot;window&quot;,
+    type: &quot;disabled-frame-bounds-changed&quot;,
+    uuid: &quot;appUUID&quot;,//the UUID of the application the window belongs to.
+    width: 2        //the new width of the window.
+}</code></pre><h4>disabled-frame-bounds-changing</h4><p>Generated when the frame is disabled during prevented user changes to a window's size and/or position.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    changeType: 2,  //describes what kind of change occurred.
+                    //0 means a change in position.
+                    //1 means a change in size.
+                    //2 means a change in position and size.
+    deffered: true, //true when pending changes have been applied.
+                    //to the window.
+    height: 2,      //the new height of the window.
+    left: 2,        //the left-most coordinate of the window.
+    name: &quot;windowName&quot;, //(string) the name of the window.
+    top: 2,         //the top-most coordinate of the window.
+    topic: &quot;window&quot;,
+    type: &quot;disabled-frame-bounds-changing&quot;,
+    uuid: &quot;appUUID&quot;,//the UUID of the application the window belongs to.
+    width: 2        //the new width of the window.
+}</code></pre><h4>focused</h4><p>Generated when a window receives focus.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;focused&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>frame-disabled</h4><p>Generated when a window's frame becomes disabled.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;frame-disabled&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>frame-enabled</h4><p>Generated when a window joins/leaves a group and/or when the group a window is a member of changes.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+   name: &quot;windowOne&quot;, //the name of the window.
+   topic: &quot;window&quot;,
+   type: &quot;frame-enabled&quot;,
+   uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>group-changed</h4><p>Generated when a window joins/leaves a group and/or when the group a window is a member of changes.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+  memberOf: &quot;source&quot;,   //Which group array the window that the event listener was registered on is included in:
+                        //'source' The window is included in sourceGroup.
+                        //'target' The window is included in targetGroup.
+                        //'nothing' The window is not included in sourceGroup nor targetGroup.
+  name: &quot;windowName&quot;,   //the name of the window.
+  reason: &quot;merge&quot;,      //The reason this event was triggered.
+                        //'leave' A window has left the group due to a leave or merge with group.
+                        //'join' A window has joined the group.
+                        //'merge' Two groups have been merged together.
+                        //'disband' There are no other windows in the group.
+  sourceGroup: [ //All the windows in the group the sourceWindow originated from.
+    {
+      appUuid: &quot;appUUID&quot;, //The UUID of the application this window entry belongs to.
+      windowName: &quot;windowName&quot; //The name of this window entry.
+    }
+  ],
+  sourceWindowAppUuid: &quot;appUUID&quot;, //The UUID of the application the sourceWindow belongs to The source window is the window in which (merge/join/leave)group(s) was called.
+  sourceWindowName: &quot;sourceWindowName&quot;, the name of the sourcewindow. The source window is the window in which (merge/join/leave)group(s) was called.
+  targetGroup: [ //All the windows in the group the targetWindow orginated from
+    {
+      appUuid: &quot;appUUID&quot;, //The UUID of the application this window entry belongs to.
+      windowName: &quot;windowName&quot; //The name of this window entry.
+    }
+  ],
+  targetWindowAppUuid: &quot;targetWindowUUID&quot;, //The UUID of the application the targetWindow belongs to. The target window is the window that was passed into (merge/join)group(s).
+  targetWindowName: &quot;targetWindowName&quot;,  //The name of the targetWindow. The target window is the window that was passed into (merge/join)group(s).
+  topic: &quot;window&quot;,
+  type: &quot;group-changed&quot;,
+  uuid: &quot;applicationUUID&quot; //The UUID of the application the window belongs to.
+}</code></pre><h4>hidden</h4><p>Generated when a window has been hidden.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    name: &quot;windowOne&quot;, //the name of the window.
+    reason: &quot;hide&quot;, //What action prompted the close The reasons are:
+                    //&quot;hide&quot;
+                    //&quot;hide-on-close&quot;
+    topic: &quot;window&quot;,
+    type: &quot;hidden&quot;,
+    uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>maximized</h4><p>Generated when a window is maximized.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    name: &quot;windowOne&quot;, //the name of the window.
+    topic: &quot;window&quot;,
+    type: &quot;maximized&quot;,
+    uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>restored</h4><p>Generated when a window is displayed after having been minimized or when a window leaves the maximize state without minimizing.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    name: &quot;windowOne&quot;, //the name of the window.
+    topic: &quot;window&quot;,
+    type: &quot;restored&quot;,
+    uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre><h4>shown</h4><p>Generated when a hidden window has been shown.</p>
+<pre class="prettyprint source lang-js"><code>//This response has the following shape:
+{
+    name: &quot;windowOne&quot;, //the name of the window.
+    topic: &quot;window&quot;,
+    type: &quot;shown&quot;,
+    uuid: &quot;AppUUID&quot; //(string) the UUID of the application the window belongs to.
+ }</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    © 2016 <a href="http://www.openfin.co" target="_blank">OpenFin</a> All Rights Reserved.
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
